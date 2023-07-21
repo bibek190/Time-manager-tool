@@ -50,7 +50,9 @@ const display = () => {
   if (totalHrs > 168) {
     total.innerHTML = "exceeded";
   } else {
-    total.innerHTML = totalHrs;
+    let remaining = 168 - totalHrs;
+    total.innerHTML = `${totalHrs} and unused ${remaining}`;
+    console.log(typeof totalHrs);
   }
 };
 

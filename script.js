@@ -4,15 +4,19 @@ const taskListElm = document.getElementById("taskList");
 const badkListElm = document.getElementById("badList");
 const total = document.querySelector(".total");
 const badHours = document.querySelector(".badhours");
+const control = document.querySelector(".form-control");
+const two = document.querySelector(".two");
 
 const handleOnSubmit = (e) => {
   const frm = new FormData(e);
   const task = frm.get("task");
-  const hr = +frm.get("hr");
+  let hr = +frm.get("hr");
   const obj = { task, hr, type: "entry", id: randomStr() };
   taskList.push(obj);
 
   display();
+  control.value = "";
+  two.value = "";
 };
 
 const display = () => {
@@ -42,7 +46,6 @@ const display = () => {
   });
 
   taskListElm.innerHTML = str;
-
   // total hours
   let totalHrs = taskList.reduce((total, item) => {
     return total + item.hr;
@@ -52,7 +55,6 @@ const display = () => {
   } else {
     let remaining = 168 - totalHrs;
     total.innerHTML = `${totalHrs} and unused ${remaining}`;
-    console.log(typeof totalHrs);
   }
 };
 
@@ -98,7 +100,6 @@ const handleOnDelete = (id) => {
 };
 
 const handleOnSwitch = (id, type) => {
-  console.log(type);
   if (window.confirm("Change task")) {
     taskList.forEach((item) => {
       if (item.id == id) {

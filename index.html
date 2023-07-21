@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Time manager Tool</title>
+
+    <style>
+      .wrapper {
+        background: linear-gradient(
+          rgba(198, 43, 68, 0.606),
+          rgba(13, 82, 110, 0.445)
+        );
+        min-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- title  -->
+      <div class="container">
+        <div class="row">
+          <div class="col text-center mt-5">
+            <h1>Time Manager</h1>
+          </div>
+        </div>
+
+        <!-- form  -->
+        <form
+          action="javascript: void(0)"
+          class="mt-5 mb-5"
+          onsubmit="handleOnSubmit(this)"
+        >
+          <div class="row p-5 rounded shadow-lg bg-light g-2">
+            <div class="col-md-7">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Please Write your daily tasks"
+                aria-label="First name"
+                name="task"
+                required
+              />
+            </div>
+            <div class="col-md-2">
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Hours/week"
+                aria-label="Last name"
+                name="hr"
+                required
+              />
+            </div>
+
+            <div class="col-md-3 d-grid">
+              <button class="btn btn-primary">
+                <i class="fa-regular fa-square-plus"></i> Add Task
+              </button>
+            </div>
+          </div>
+        </form>
+        <!-- tables  -->
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <h3>Task Entry List</h3>
+            <hr />
+            <table class="table table-hover table-striped">
+              <tbody id="taskList"></tbody>
+            </table>
+          </div>
+
+          <div class="col-md-6 text-center">
+            <h3>Bad Task List</h3>
+            <hr />
+            <table class="table table-hover table-striped">
+              <tbody id="badList"></tbody>
+            </table>
+            <p>Extra time : <span class="badhours">0 </span>hours</p>
+          </div>
+        </div>
+
+        <p>
+          Total hours allocated per week = <span class="total">0</span> hours
+        </p>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
